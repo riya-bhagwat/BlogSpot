@@ -1,0 +1,15 @@
+service: fullstack_blogging
+
+plugins:
+  - serverless-python-requirements
+
+provider:
+  name: aws
+  runtime: python3.8
+
+functions:
+  app:
+    handler: fullstack_blogging/wsgi.handler
+    events:
+      - http: ANY /
+      - http: "ANY {proxy+}"
